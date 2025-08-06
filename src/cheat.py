@@ -3,14 +3,36 @@ import click
 
 def run_quiz():
     print("\n=== SQL vs NoSQL Quiz ===\n")
-    print("Pytanie 1: Która baza danych najlepiej nadaje się do przechowywania danych o stałej strukturze?")
-    print("a) SQL")
-    print("b) NoSQL")
-    answer1 = input("Twój wybór (a/b): ").strip().lower()
-    if answer1 == "a":
-        print("Dobrze! SQL jest lepszy dla danych o stałej strukturze.\n")
-    else:
-        print("Nie do końca. SQL jest lepszy dla danych o stałej strukturze.\n")
+    questions = [
+        {
+            "question": "Która baza danych najlepiej nadaje się do przechowywania danych o stałej strukturze?",
+            "options": {"a": "SQL", "b": "NoSQL"},
+            "answer": "a"
+        },
+        {
+            "question": "Która baza danych lepiej skaluje się horyzontalnie?",
+            "options": {"a": "SQL", "b": "NoSQL"},
+            "answer": "b"
+        },
+        {
+            "question": "Która baza danych ma silne schematy i relacje między tabelami?",
+            "options": {"a": "SQL", "b": "NoSQL"},
+            "answer": "a"
+        }
+    ]
+    
+    score = 0
+    for i, q in enumerate(questions, 1):
+        print(f"\nPytanie {i}: {q['question']}")
+        for key, val in q["options"].items():
+            print(f"{key} {val}")
+        answer = input("Twój wybór: ").strip().lower()
+        if answer == q["answer"]:
+            print("Dobrze!")
+            score += 1
+        else:
+            print(f"Źle. Poprawna odpowiedź: {q['answer']}) {q['options'][q['answer']]}")
+    print(f"\nTwój wynik: {score}/{len(questions)}")
 
 
 @click.group()
