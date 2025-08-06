@@ -25,8 +25,15 @@ def run_quiz():
     for i, q in enumerate(questions, 1):
         print(f"\nPytanie {i}: {q['question']}")
         for key, val in q["options"].items():
-            print(f"{key} {val}")
-        answer = input("Twój wybór: ").strip().lower()
+            print(f"{key}) {val}")
+      
+        while True:
+            answer = input("Twój wybór (a/b): ").strip().lower()
+            if answer in q["options"]:
+                break
+            else:
+                print("Niepoprawna opcja, wybierz a lub b.")
+
         if answer == q["answer"]:
             print("Dobrze!")
             score += 1
