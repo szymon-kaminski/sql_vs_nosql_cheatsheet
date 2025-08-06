@@ -1,5 +1,18 @@
 import click
 
+
+def run_quiz():
+    print("\n=== SQL vs NoSQL Quiz ===\n")
+    print("Pytanie 1: Która baza danych najlepiej nadaje się do przechowywania danych o stałej strukturze?")
+    print("a) SQL")
+    print("b) NoSQL")
+    answer1 = input("Twój wybór (a/b): ").strip().lower()
+    if answer1 == "a":
+        print("Dobrze! SQL jest lepszy dla danych o stałej strukturze.\n")
+    else:
+        print("Nie do końca. SQL jest lepszy dla danych o stałej strukturze.\n")
+
+
 @click.group()
 def cli():
     """Interaktywna ściąga: SQL vs NoSQL"""
@@ -39,6 +52,12 @@ def compare():
 | Use Cases         | Structured data, ACID compliance   | Big Data, real-time apps, flexibility |
 """
     click.echo(table)
+
+
+@cli.command()
+def quiz():
+    """Krótki quiz SQL vs NoSQL"""
+    run_quiz()
 
 
 if __name__ == "__main__":
