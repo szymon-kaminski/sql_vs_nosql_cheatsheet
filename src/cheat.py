@@ -26,5 +26,20 @@ def nosql():
     click.echo('  db.users.find({ age: { $gt: 30 } })')
 
 
+@cli.command()
+def compare():
+    """Compare SQL and NoSQL databases."""
+    table = f"""
+| Feature           | SQL                                | NoSQL                                 |
+|-------------------|------------------------------------|---------------------------------------|
+| Model             | Relational (tables)                | Non-relational (JSON, key-value)      |
+| Schema            | Fixed                              | Dynamic / flexible                    |
+| Scalability       | Vertical (scale-up)                | Horizontal (scale-out)                |
+| Query Language    | SQL                                | Varies (MongoQL, etc.)                |
+| Use Cases         | Structured data, ACID compliance   | Big Data, real-time apps, flexibility |
+"""
+    click.echo(table)
+
+
 if __name__ == "__main__":
     cli()
